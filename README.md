@@ -2,9 +2,9 @@
 
 ## What
 
-This repository is a colleciton of [script-fu scripts](https://docs.gimp.org/en/gimp-scripting.html) that I have written for [GIMP](https://www.gimp.org/).
+This repository is a collection of [script-fu scripts](https://docs.gimp.org/en/gimp-scripting.html) that I have written for [GIMP](https://www.gimp.org/).
 
-They will be split into multiple directories. Currently only the batch directory exists. It contains scheme scripts that can be installed and then used with [batch mode](https://www.gimp.org/tutorials/Basic_Batch/). These scripts will not appear in the GIMP menus, and nothing is wrong with them.
+They will be split into multiple directories. Currently, only the batch directory exists. It contains scheme scripts that can be installed and then used with [batch mode](https://www.gimp.org/tutorials/Basic_Batch/). These scripts will not appear in the GIMP menus, and nothing is wrong with them.
 
 There is no documentation of the scripts in this README, not at this time, at least. You will have to read the comments in the scripts to learn what they're for.
 
