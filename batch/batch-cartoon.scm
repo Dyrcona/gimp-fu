@@ -14,11 +14,11 @@
 ;; ---------------------------------------------------------------
 
 ;; This script is intended to batch process a series of photos into
-;; cartoon-like images.  It applies the Gaussian blur filter followed
-;; by the Cartoon artistic filter using the options provided as
-;; arguments.  It replaces the original images with the results of
-;; applying the filter, so be sure to work on copies if you want to
-;; keep the original images intact.
+;; cartoon-like images.  It applies the Cartoon artistic filter
+;; followed by the Color -> Posterize command using the options
+;; provided as arguments.  It replaces the original images with the
+;; results of applying the filter, so be sure to work on copies if you
+;; want to keep the original images intact.
 ;;
 ;; Arguments:
 ;; pattern: A file glob pattern to match files to open, i.e '*.jpg', '*.png', etc.
