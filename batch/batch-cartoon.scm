@@ -1,6 +1,6 @@
 ;; ---------------------------------------------------------------
 ;; batch-cartoon: A script to batch process photos into cartons.
-;; Copyright (C) 2018 Jason J.A. Stephenson <jason@sigio.com>
+;; Copyright (C) 2018, 2021 Jason J.A. Stephenson <jason@sigio.com>
 ;;
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License as
@@ -22,20 +22,18 @@
 ;;
 ;; Arguments:
 ;; pattern: A file glob pattern to match files to open, i.e '*.jpg', '*.png', etc.
-;; gaussHorizRadius: A float value for the horizontal radius argument to the Gaussian blur filter
-;; gaussVertRadius: A float value for the vertical radius argument to the Gaussian blur filter
-;; gaussMode: A literal 0 or 1 for the IIR or RLE Gaussian blur modes, respectively
+;; posterizeLevels: An integer  value between 2 and 256 for the gimp-drawable-posterize levels argument
 ;; maskRadius: A float value for the mask radius argument to the cartoon filter plug-in
 ;; blackPercent: A float value between 0.0 and 1.0 for the black percentage argument to the cartoon filter
 
-(define (batch-cartoon pattern gaussHorizRadius gaussVertRadius gaussMethod maskRadius blackPercent)
+(define (batch-cartoon pattern posterizeLevels maskRadius blackPercent)
   (let* ((filelist (cadr (file-glob pattern 1))))
     (while (not (null? filelist))
            (let* ((filename (car filelist))
                   (image (car (gimp-file-load RUN-NONINTERACTIVE filename filename)))
                   (drawable (car (gimp-image-get-active-layer image))))
-             (plug-in-gauss RUN-NONINTERACTIVE image drawable gaussHorizRadius gaussVertRadius gaussMethod)
              (plug-in-cartoon RUN-NONINTERACTIVE image drawable maskRadius blackPercent)
+             (gimp-drawable-posterize drawable posterizeLevels)
              (gimp-file-save RUN-NONINTERACTIVE image drawable filename filename)
              (gimp-image-delete image))
            (set! filelist (cdr filelist)))))
